@@ -16,6 +16,5 @@ kubectl apply -f kube-flannel.yml
 kubectl config view
 kubectl cluster-info
 
-
-
-
+#worker join master
+sh worker_join_master.sh

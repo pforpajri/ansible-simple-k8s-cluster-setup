@@ -1,3 +1,11 @@
-[servers]
+[all_server]
+knicles.my.id
+dev.comnetbe.my.id
+dev.knicles.my.id
+
+[master]
+knicles.my.id
+
+[worker]
 dev.comnetbe.my.id 
 dev.knicles.my.id
