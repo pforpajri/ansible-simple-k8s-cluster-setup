@@ -10,8 +10,7 @@
           - curl
           - software-properties-common
           - python3-pip
-          - virtualenv
-          - python3-setuptools
+          - gnupg-agent
         state: latest
         update_cache: yes
         force_apt_get: yes
@@ -21,7 +20,7 @@
         url: https://download.docker.com/linux/ubuntu/gpg
         state: present
 
-    - name: Add Docker Repo
+    - name: Add docker repo
       apt_repository:
         repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable
         state: present
@@ -32,3 +31,41 @@
         state: latest
         update_cache: yes
         force_apt_get: yes
+
+    - name: Add k8s GPG apt key
+      apt_key:
+        url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+        state: present
+
+    - name: Add k8s repo
+      apt_repository:
+        repo: deb http://apt.kubernetes.io/ kubernetes-xenial main
+        state: present
+
+    - name: Install kubelet, kubectl, kubeadm
+      apt:
+        pkg:
+          - kubectl
+          - kubelet
+          - kubeadm
+        state: latest
+        update_cache: yes
+        force_apt_get: yes
+
+    - name: Hold kubelet
+      dpkg_selections:
+        name: kubelet
+        selection: hold
+
+    - name: Hold kubectl
+      dpkg_selections:
+        name: kubectl
+        selection: hold
+
+    - name: Hold kubeadm
+      dpkg_selections:
+        name: kubeadm
+        selection: hold
+
+
+

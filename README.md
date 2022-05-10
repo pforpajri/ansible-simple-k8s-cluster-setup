@@ -1,1 +1,1 @@
-Build Simple Kubernetes Culuster with Ansible
+Build Simple Kubernetes Cluster with Ansible
