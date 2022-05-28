@@ -1,0 +1,6 @@
+- name: "Configure SSH for each server"
+  hosts: all_server
+  vars:
+    - username: p0x07g
+  tasks:
+
