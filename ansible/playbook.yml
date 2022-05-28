@@ -9,7 +9,6 @@
           - ca-certificates
           - curl
           - software-properties-common
-          - python3-pip
           - gnupg-agent
         state: latest
         update_cache: yes
